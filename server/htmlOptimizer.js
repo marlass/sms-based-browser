@@ -1,6 +1,6 @@
 const htmlMinifier = require('html-minifier');
-const cheerio = require('cheerio')
-const chalk = require("chalk");
+const cheerio = require('cheerio');
+const chalk = require('chalk');
 const prettyBytes = require('pretty-bytes');
 
 module.exports = function minify(originalHTML, logs = false) {
@@ -13,14 +13,16 @@ module.exports = function minify(originalHTML, logs = false) {
     let html = originalHTML;
 
     log(chalk.bold('Size before:'), chalk.blue(prettyBytes(html.length)));
-    
+
     const $ = cheerio.load(html);
     $('script').remove();
 
-    html = $.html();   
+    html = $.html();
 
-
-    log(chalk.bold('Size after cheerio:'), chalk.blue(prettyBytes(html.length)));
+    log(
+        chalk.bold('Size after cheerio:'),
+        chalk.blue(prettyBytes(html.length))
+    );
     const minifiedOptions = {
         caseSensitive: false,
         collapseBooleanAttributes: true,
@@ -52,8 +54,11 @@ module.exports = function minify(originalHTML, logs = false) {
         sortClassName: false,
         trimCustomFragments: false,
         useShortDoctype: true,
-    }
+    };
     html = htmlMinifier.minify(html, minifiedOptions);
-    log(chalk.bold('Size after minifier:'), chalk.blue(prettyBytes(html.length)));
+    log(
+        chalk.bold('Size after minifier:'),
+        chalk.blue(prettyBytes(html.length))
+    );
     return html;
-}
+};
