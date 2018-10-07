@@ -9,6 +9,6 @@ app.get('/', async (req, res) => {
     const resultHTML = await renderPage(req.query.url);
     const optimizedHTML = htmlOptimizer(resultHTML, true);
     res.send(optimizedHTML);
-})
+});
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
