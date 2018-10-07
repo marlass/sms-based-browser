@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Server for sms based browser",
+  "main": "index.js",
+  "author": "Marcin Lasak",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "puppeteer": "^1.9.0"
+  }
+}
